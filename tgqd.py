@@ -21,8 +21,14 @@ def save_log(log):
         json.dump(log, f, ensure_ascii=False, indent=2)
 
 # 初始化 Telegram 客户端
-proxy_type = socks.SOCKS5 if config.proxy[0] == 'socks5' else None
-client = TelegramClient(config.session_name, config.api_id, config.api_hash, proxy=(proxy_type, config.proxy[1], config.proxy[2]))
+if config.proxy:
+    proxy_type = socks.SOCKS5 if config.proxy[0] == 'socks5' else None
+    proxy_settings = (proxy_type, config.proxy[1], config.proxy[2])
+else:
+    proxy_settings = None
+
+client = TelegramClient(config.session_name, config.api_id, config.api_hash, proxy=proxy_settings)
+
 
 async def checkin_all():
     now = datetime.datetime.now()
