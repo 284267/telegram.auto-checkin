@@ -22,34 +22,31 @@
 你可以将本项目部署到 Linux 服务器（如 Ubuntu、Debian、CentOS），实现每日自动 Telegram 签到任务。
 
 ---
-
-### 🧰 1. 安装 Python3（建议 Python 3.8+）
-
-```bash
+# ✅ 更新系统 & 安装 Python3 + pip
 sudo apt update
 sudo apt install python3 python3-pip -y
 
-
+# ✅ 克隆项目仓库
 git clone https://github.com/284267/telegram-auto-checkin.git
 cd telegram-auto-checkin
- 安装依赖
+
+# ✅ 安装依赖包
 pip3 install -r requirements.txt
-复制配置模板并修改你的信息：
+
+# ✅ 创建配置文件（从模板复制）
 cp config_template.py config.py
+
+# ✅ 编辑配置文件（填写你的 Telegram 信息）
 nano config.py
 
-根据模板填写以下内容：
+# 在 config.py 中填写以下内容：
+# - 你的 Telegram API ID（整数）
+# - 你的 Telegram API Hash（字符串）
+# - Bot 用户名列表（不加@）
+# - 群组用户名列表（不加@）
+# - 每个群或 Bot 的签到指令
+# - 是否使用代理（例如：('socks5', '127.0.0.1', 7890)，如果不使用则写 None）
 
-Telegram API ID 和 Hash
-
-签到的 Bot 用户名
-
-群组签到内容
-
-默认签到命令
-
-是否使用代理（可设为 None）
-
+# ✅ 手动运行一次，首次登录 Telegram（扫码或验证码）
 python3 tgqd.py
-
 
