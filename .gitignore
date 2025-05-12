@@ -172,6 +172,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-config.py
-checkin_log.json
 
